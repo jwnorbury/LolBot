@@ -6,6 +6,7 @@ namespace MatchUpBot.Config
 {
     public static class ConfigProvider
     {
+        private const string CONFIG_FILE_NAME = "config.json";
         private static Config _config;
         public static Config Current
         {
@@ -23,10 +24,10 @@ namespace MatchUpBot.Config
 
         private static Config Load()
         {
-            var configFile = Directory.GetCurrentDirectory() + "\\appsettings.json";
+            var configFile = Directory.GetCurrentDirectory() + "\\" + CONFIG_FILE_NAME;
             if (!File.Exists(configFile))
             {
-                throw new FileNotFoundException("appsettings.json missing from current directory");
+                throw new FileNotFoundException($"{CONFIG_FILE_NAME} missing from current directory");
             }
             using (var fs = new FileStream(configFile, FileMode.Open))
             using (var sr = new StreamReader(fs))
