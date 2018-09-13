@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2019
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatchUpBot", "MatchUpBot\MatchUpBot.csproj", "{9F62A9DC-1DEB-42CC-BEA8-27AABBD7AA65}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatchUpBot.Host", "MatchUpBot.Host\MatchUpBot.Host.csproj", "{2F611B6D-071D-48B4-8171-785D8225746F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatchUpBot.Services", "MatchUpBot.Services\MatchUpBot.Services.csproj", "{EF11D94A-77EE-485E-98A4-C601288C66DD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatchUpBot.Config", "MatchUpBots.Config\MatchUpBot.Config.csproj", "{533F1197-21D9-4903-A68D-85EACE6D501A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +15,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{9F62A9DC-1DEB-42CC-BEA8-27AABBD7AA65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9F62A9DC-1DEB-42CC-BEA8-27AABBD7AA65}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9F62A9DC-1DEB-42CC-BEA8-27AABBD7AA65}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9F62A9DC-1DEB-42CC-BEA8-27AABBD7AA65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F611B6D-071D-48B4-8171-785D8225746F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F611B6D-071D-48B4-8171-785D8225746F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F611B6D-071D-48B4-8171-785D8225746F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F611B6D-071D-48B4-8171-785D8225746F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF11D94A-77EE-485E-98A4-C601288C66DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF11D94A-77EE-485E-98A4-C601288C66DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF11D94A-77EE-485E-98A4-C601288C66DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF11D94A-77EE-485E-98A4-C601288C66DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{533F1197-21D9-4903-A68D-85EACE6D501A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{533F1197-21D9-4903-A68D-85EACE6D501A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{533F1197-21D9-4903-A68D-85EACE6D501A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{533F1197-21D9-4903-A68D-85EACE6D501A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

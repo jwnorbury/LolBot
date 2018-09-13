@@ -260,3 +260,4 @@ paket-files/
 __pycache__/
 *.pyc
 /MatchUpBot/settings.json
+/MatchUpBot.Host/appsettings.json
