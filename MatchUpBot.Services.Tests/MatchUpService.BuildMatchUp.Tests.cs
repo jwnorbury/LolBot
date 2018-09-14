@@ -1,3 +1,4 @@
+using MatchUpBot.Services.MatchUp;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace MatchUpBot.Services.Tests
