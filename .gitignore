@@ -260,3 +260,5 @@ paket-files/
 __pycache__/
 *.pyc
 /MatchUpBot.Host/config.json
+.vscode/
+.vscode/

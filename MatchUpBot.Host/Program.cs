@@ -24,14 +24,13 @@ namespace MatchUpBot
         {
             using (var client = new DiscordSocketClient())
             {
-                var token = ConfigProvider.Current.Token;
+                var config = await ConfigProvider.GetConfigAsync().ConfigureAwait(false);
 
                 client.Log += LoggingService.Log;
                 client.MessageReceived += MessageHandler.MessageRecieved;
 
-                await client.LoginAsync(Discord.TokenType.Bot, token).ConfigureAwait(false);
+                await client.LoginAsync(Discord.TokenType.Bot, config.Token).ConfigureAwait(false);
                 await client.StartAsync().ConfigureAwait(false);
-
                 await Task.Delay(-1);
             }
         }
