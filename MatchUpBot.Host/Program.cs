@@ -10,17 +10,13 @@ namespace MatchUpBot
     {
         private static void Main(string[] args)
         {
-            while (true)
+            try
             {
-                try
-                {
-                    MainAsync().GetAwaiter().GetResult();
-                }
-                catch (Exception ex)
-                {
-                    LoggingService.LogError("An unexpected error has occured.", ex);
-                }
-                LoggingService.Log("Restarting...");
+                MainAsync().GetAwaiter().GetResult();
+            }
+            catch (Exception ex)
+            {
+                LoggingService.LogError("An unexpected error has occured.", ex);
             }
         }
 
