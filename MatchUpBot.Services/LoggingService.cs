@@ -14,12 +14,20 @@ namespace MatchUpBot.Services
             return Task.CompletedTask;
         }
 
+        public static void Log(string message)
+        {
+            Console.WriteLine(message);
+        }
+
         public static void LogError(string error)
         {
+            Console.WriteLine(error);
         }
 
         public static void LogError(string error, Exception ex)
         {
+            Console.WriteLine(error);
+            Console.WriteLine(ex);
         }
     }
 }
