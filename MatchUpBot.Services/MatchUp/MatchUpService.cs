@@ -1,7 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
-namespace MatchUpBot.Services
+namespace MatchUpBot.Services.MatchUp
 {
     public static class MatchUpService
     {
@@ -22,7 +23,17 @@ namespace MatchUpBot.Services
                 return "I didn't understand that requst. "
                     + "Please ask in the format !matchup|!mu [champion] [opponent] [role]";
             }
-            return MATCHUP_URL_TEMPATE + string.Join('/', messageParts.Skip(1));
+            if (messageParts.Length == 4 && !ValidRole(messageParts[3]))
+            {
+                return "I could not find that role. Here is the most common role instead.\n" 
+                    + CreateUrl(messageParts.SkipLast(1));
+            }
+            return CreateUrl(messageParts);
         }
+
+        private static bool ValidRole(string role) => Enum.IsDefined(typeof(Enumerations.Role), role);
+
+        private static string CreateUrl(IEnumerable<string> messageParts) =>
+            MATCHUP_URL_TEMPATE + string.Join('/', messageParts.Skip(1));
     }
 }

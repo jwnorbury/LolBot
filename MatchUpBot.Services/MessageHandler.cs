@@ -1,7 +1,5 @@
 ﻿using Discord.WebSocket;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using MatchUpBot.Services.MatchUp;
 using System.Threading.Tasks;
 
 namespace MatchUpBot.Services
