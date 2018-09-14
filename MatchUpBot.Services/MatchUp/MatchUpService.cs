@@ -25,13 +25,18 @@ namespace MatchUpBot.Services.MatchUp
             }
             if (messageParts.Length == 4 && !ValidRole(messageParts[3]))
             {
-                return "I could not find that role. Here is the most common role instead.\n" 
+                var supportedRoles = Enum.GetNames(typeof(Enumerations.Role));
+                var commaSeparatedRoles = string.Join(", ", supportedRoles);
+                return $"I could not find the role '{messageParts[3]}'. "
+                    + $"Available roles are: {commaSeparatedRoles}.\n"
+                    + "Here is the most common role for this matchup instead.\n"
                     + CreateUrl(messageParts.SkipLast(1));
             }
             return CreateUrl(messageParts);
         }
 
-        private static bool ValidRole(string role) => Enum.IsDefined(typeof(Enumerations.Role), role);
+        private static bool ValidRole(string role) =>
+            Enum.TryParse(role, true, out Enumerations.Role _);
 
         private static string CreateUrl(IEnumerable<string> messageParts) =>
             MATCHUP_URL_TEMPATE + string.Join('/', messageParts.Skip(1));
