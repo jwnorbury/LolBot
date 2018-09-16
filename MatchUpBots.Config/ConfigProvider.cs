@@ -8,28 +8,14 @@ namespace MatchUpBot.Config
     public static class ConfigProvider
     {
         private const string CONFIG_FILE_NAME = "config.json";
-        private static Config _config;
 
         private static string FilePath() =>
             Path.Combine(Directory.GetCurrentDirectory(), CONFIG_FILE_NAME);
 
-        public static Config GetConfig()
-        {
-            if (_config == null)
-            {
-                _config = Load();
-            }
-            return _config;
-        }
+        public static Config GetConfig() => Load();
 
-        public static async Task<Config> GetConfigAsync()
-        {
-            if (_config == null)
-            {
-                _config = await LoadAsync();
-            }
-            return _config;
-        }
+        public static async Task<Config> GetConfigAsync() => 
+            await LoadAsync().ConfigureAwait(false);
 
         private static void CheckFileExists(string filePath)
         {
