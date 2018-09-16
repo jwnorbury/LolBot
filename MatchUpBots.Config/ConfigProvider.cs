@@ -9,26 +9,18 @@ namespace MatchUpBot.Config
     {
         private const string CONFIG_FILE_NAME = "config.json";
 
-        private static string FilePath() =>
+        public static string FilePath() =>
             Path.Combine(Directory.GetCurrentDirectory(), CONFIG_FILE_NAME);
 
         public static Config GetConfig() => Load();
 
-        public static async Task<Config> GetConfigAsync() => 
-            await LoadAsync().ConfigureAwait(false);
-
-        private static void CheckFileExists(string filePath)
-        {
-            if (!File.Exists(filePath))
-            {
-                throw new FileNotFoundException($"{CONFIG_FILE_NAME} missing from current directory");
-            }
-        }
+        public static Task<Config> GetConfigAsync() => LoadAsync();
 
         private static async Task<Config> LoadAsync()
         {
             var filePath = FilePath();
-            CheckFileExists(filePath);
+            if (!File.Exists(filePath)) return null;
+
             using (var fs = new FileStream(filePath, FileMode.Open))
             using (var sr = new StreamReader(fs))
             {
@@ -40,7 +32,8 @@ namespace MatchUpBot.Config
         private static Config Load()
         {
             var filePath = FilePath();
-            CheckFileExists(filePath);
+            if (!File.Exists(filePath)) return null;
+
             using (var fs = new FileStream(filePath, FileMode.Open))
             using (var sr = new StreamReader(fs))
             {

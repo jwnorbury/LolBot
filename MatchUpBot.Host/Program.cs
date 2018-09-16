@@ -25,6 +25,12 @@ namespace MatchUpBot
             using (var client = new DiscordSocketClient())
             {
                 var config = await ConfigProvider.GetConfigAsync().ConfigureAwait(false);
+                if (config == null)
+                {
+                    LoggingService.LogError("Could not start bot. "
+                        + $"'{ConfigProvider.FilePath()}' does not exist.");
+                    return;
+                }
 
                 client.Log += LoggingService.Log;
                 client.MessageReceived += MessageHandler.MessageRecieved;
