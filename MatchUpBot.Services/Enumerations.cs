@@ -1,6 +1,6 @@
 ﻿namespace MatchUpBot.Services.Enumerations
 {
-    public enum Role
+    public enum MatchUpRole
     {
         Top,
         Mid,

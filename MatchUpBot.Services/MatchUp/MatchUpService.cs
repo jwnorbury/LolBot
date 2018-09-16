@@ -25,7 +25,7 @@ namespace MatchUpBot.Services.MatchUp
             }
             if (messageParts.Length == 4 && !ValidRole(messageParts[3]))
             {
-                var supportedRoles = Enum.GetNames(typeof(Enumerations.Role));
+                var supportedRoles = Enum.GetNames(typeof(Enumerations.MatchUpRole));
                 var commaSeparatedRoles = string.Join(", ", supportedRoles);
                 return $"I could not find the role '{messageParts[3]}'. "
                     + $"Available roles are: {commaSeparatedRoles}.\n"
@@ -36,7 +36,7 @@ namespace MatchUpBot.Services.MatchUp
         }
 
         private static bool ValidRole(string role) =>
-            Enum.TryParse(role, true, out Enumerations.Role _);
+            Enum.TryParse(role, true, out Enumerations.MatchUpRole _);
 
         private static string CreateUrl(IEnumerable<string> messageParts) =>
             MATCHUP_URL_TEMPATE + string.Join('/', messageParts.Skip(1));
