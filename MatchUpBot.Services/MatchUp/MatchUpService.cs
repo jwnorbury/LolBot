@@ -21,7 +21,7 @@ namespace MatchUpBot.Services.MatchUp
             if (messageParts.Length != 3 && messageParts.Length != 4)
             {
                 return "I didn't understand that requst. "
-                    + "Please ask in the format !matchup|!mu [champion] [opponent] [role]";
+                    + "Please ask in the format !matchup|!mu [champion] [opponent] (optional)[role]";
             }
             if (messageParts.Length == 4 && !ValidRole(messageParts[3]))
             {
