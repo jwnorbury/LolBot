@@ -15,6 +15,6 @@
         Mid,
         Jungle,
         Bot,
-        Suuport
+        Support
     }
 }
