@@ -17,7 +17,7 @@ namespace MatchUpBot.Services.MatchUp
             {
                 return "Invalid input. All requests must start with !matchup or !mu";
             }
-            var messageParts = message.ToLower().Split(" ");
+            var messageParts = message.ToLower().Split(' ', StringSplitOptions.RemoveEmptyEntries);
             if (messageParts.Length != 3 && messageParts.Length != 4)
             {
                 return "I didn't understand that requst. "

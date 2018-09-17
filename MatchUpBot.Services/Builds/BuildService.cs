@@ -18,7 +18,7 @@ namespace MatchUpBot.Services.Builds
             {
                 return "Invalid input. All requests must start with !build.";
             }
-            var messageParts = message.Split();
+            var messageParts = message.Split(' ', StringSplitOptions.RemoveEmptyEntries);
             if (messageParts.Length != 2 && messageParts.Length != 3) 
             {
                 return "I didn't understand that requst. "
