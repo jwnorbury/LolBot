@@ -12,7 +12,7 @@ namespace MatchUpBot.Services.Builds
         public static bool IsBuildMessage(string message) =>
             message.StartsWith("!build ");
         
-        public static string BuildBuild(string message) 
+        public static string BuildSuggestedBuild(string message) 
         {
             if (!IsBuildMessage(message))
             {

@@ -17,7 +17,7 @@ namespace MatchUpBot.Services
             }
             else if (BuildService.IsBuildMessage(content))
             {
-                var response = BuildService.BuildBuild(content);
+                var response = BuildService.BuildSuggestedBuild(content);
                 await message.Channel.SendMessageAsync(response).ConfigureAwait(false);
             }
         }
