@@ -44,5 +44,21 @@ namespace MatchUpBot.Services.Tests
             var response = BuildService.BuildSuggestedBuild("!build ");
             Assert.AreEqual(expectedResponse, response);
         }
+
+        [TestMethod]
+        public void Build_InvalidRole_ErrorMessage()
+        {
+            var champ = "kled";
+            var role = "bat";
+            var response = BuildService.BuildSuggestedBuild(
+                $"!build {champ} {role}");
+            var supportedRoles = Enum.GetNames(typeof(Enumerations.BuildRole));
+            var commaSeparatedRoles = string.Join(", ", supportedRoles);
+            var expectedResponse = $"I could not find the role '{role}'. "
+                + $"Available roles are: {commaSeparatedRoles}.\n"
+                + "Here is the most common role for this matchup instead.\n"
+                + $"http://euw.op.gg/champion/{champ}";
+            Assert.AreEqual(expectedResponse, response);
+        }
     }
 }
