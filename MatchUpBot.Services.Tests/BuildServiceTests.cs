@@ -26,5 +26,23 @@ namespace MatchUpBot.Services.Tests
             var response = BuildService.BuildSuggestedBuild(request);
             Assert.AreEqual(expectedResponse, response);
         }
+
+        [TestMethod]
+        public void Build_InvalidCommand_ErrorMessage()
+        {
+            var response = BuildService.BuildSuggestedBuild("INVALID");
+            var expectedResponse = 
+                "Invalid input. All requests must start with !build.";
+            Assert.AreEqual(expectedResponse, response);
+        }
+
+        [TestMethod]
+        public void Build_InvalidArgument_ErrorMessage()
+        {
+            var expectedResponse = "I didn't understand that requst. "
+                + "Please ask in the format !build [champion] (optional)[role]";
+            var response = BuildService.BuildSuggestedBuild("!build ");
+            Assert.AreEqual(expectedResponse, response);
+        }
     }
 }
