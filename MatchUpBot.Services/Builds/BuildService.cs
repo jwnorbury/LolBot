@@ -24,9 +24,9 @@ namespace MatchUpBot.Services.Builds
                 return "I didn't understand that requst. "
                     + "Please ask in the format !build [champion] (optional)[role]";
             }
-            if (messageParts.Length == 3 && ValidRole(messageParts[2])) 
+            if (messageParts.Length == 3 && RoleMatcher.TryGetBuildRole(messageParts[2], out string validRole)) 
             {
-                return CreateUrl(messageParts[1], messageParts[2]);
+                return CreateUrl(messageParts[1], validRole);
             }
             else if (messageParts.Length == 3)
             {

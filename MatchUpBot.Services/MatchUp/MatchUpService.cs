@@ -23,22 +23,26 @@ namespace MatchUpBot.Services.MatchUp
                 return "I didn't understand that requst. "
                     + "Please ask in the format !matchup|!mu [champion] [opponent] (optional)[role]";
             }
-            if (messageParts.Length == 4 && !ValidRole(messageParts[3]))
+            if (messageParts.Length == 4 && RoleMatcher.TryGetMatchUpRole(messageParts[3], out string validRole))
+            {
+                return CreateUrl(messageParts[1], messageParts[2], validRole);
+            }
+            else if (messageParts.Length == 4)
             {
                 var supportedRoles = Enum.GetNames(typeof(Enumerations.MatchUpRole));
                 var commaSeparatedRoles = string.Join(", ", supportedRoles);
                 return $"I could not find the role '{messageParts[3]}'. "
                     + $"Available roles are: {commaSeparatedRoles}.\n"
                     + "Here is the most common role for this matchup instead.\n"
-                    + CreateUrl(messageParts.SkipLast(1));
+                    + CreateUrl(messageParts[1], messageParts[2]);
             }
-            return CreateUrl(messageParts);
+            return CreateUrl(messageParts[1], messageParts[2]);
         }
 
-        private static bool ValidRole(string role) =>
-            Enum.TryParse(role, true, out Enumerations.MatchUpRole _);
+        private static string CreateUrl(string champ, string opponent) =>
+            MATCHUP_URL_TEMPATE + $"{champ}/{opponent}";
 
-        private static string CreateUrl(IEnumerable<string> messageParts) =>
-            MATCHUP_URL_TEMPATE + string.Join('/', messageParts.Skip(1));
+        private static string CreateUrl(string champ, string opponent, string role) =>
+            MATCHUP_URL_TEMPATE + $"{champ}/{opponent}/{role}";
     }
 }
