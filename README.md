@@ -9,6 +9,7 @@ Features
   - !vs missfortune (role)
 
 Technical
+- Create ILolService interface which each service (Build, MatchUp) implements.
 - Create ILogging interface
   - Rename LoggingService to LoggingProvider
   - Create LoggingService which initially calls LoggingProvider
